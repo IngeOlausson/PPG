@@ -1,9 +1,9 @@
 {
   "id": "64d4c369-299f-4762-a6af-e132f6346ef1",
   "name": "PPG",
-  "publisher": "Default publisher",
-  "brief": "",
-  "description": "",
+  "publisher": "IOL",
+  "brief": "PPG",
+  "description": "PPG",
   "version": "1.0.0.0",
   "compatibilityId": "1.0.0.0",
   "privacyStatement": "",
