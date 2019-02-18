@@ -9,6 +9,14 @@ pageextension 50030 "HTC Items"  extends "Item Card"
             {
                 
             }
+            field("Max Qty. in Bin";"Max Qty. in Bin")
+            {
+
+            }
+            field("Transfered to PPG";"Transfered to PPG")
+            {
+                
+            }
         }
     }
 
