@@ -5,18 +5,22 @@ pageextension 50030 "HTC Items"  extends "Item Card"
         // Add changes to page layout here
         addafter("Phys Invt Counting Period Code")
         {
-            field("Bin Type";"Bin Type")
+            group(PPG)
             {
+                field("Bin Type";"Bin Type")
+                {
                 
-            }
-            field("Max Qty. in Bin";"Max Qty. in Bin")
-            {
+                }
+                field("Max Qty. in Bin";"Max Qty. in Bin")
+                {   
 
-            }
-            field("Transfered to PPG";"Transfered to PPG")
-            {
+                }
+                field("Transfered to PPG";"Transfered to PPG")
+                {
 
+                }
             }
+            
         }
     }
 
