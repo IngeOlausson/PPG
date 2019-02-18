@@ -29,8 +29,7 @@ pageextension 50030 "HTC Items"  extends "Item Card"
         // Add changes to page actions here
         addlast("F&unctions")
         {
-            group("PPG Kardex")
-            {
+            
                 action("Send to PPG")
                 {
                     ApplicationArea=All;
@@ -38,13 +37,13 @@ pageextension 50030 "HTC Items"  extends "Item Card"
                     Promoted=true;
                     PromotedIsBig=true;
                     Image=ExportFile;
-                    
+
                     trigger OnAction();
                     begin
                         Message('Skickar filen');
                     end;
                 }
-            }
+        
         }
     }
     
