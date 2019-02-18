@@ -35,6 +35,10 @@ pageextension 50030 "HTC Items"  extends "Item Card"
                 {
                     ApplicationArea=All;
                     Caption='Send to PPG';
+                    Promoted=true;
+                    PromotedIsBig=true;
+                    Image=ExportFile;
+                    
                     trigger OnAction();
                     begin
                         Message('Skickar filen');
