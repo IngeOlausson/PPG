@@ -15,7 +15,7 @@ pageextension 50030 "HTC Items"  extends "Item Card"
             }
             field("Transfered to PPG";"Transfered to PPG")
             {
-                
+
             }
         }
     }
