@@ -37,11 +37,13 @@ pageextension 50030 "HTC Items"  extends "Item Card"
                     Promoted=true;
                     PromotedIsBig=true;
                     Image=ExportFile;
+                    RunObject = xmlport ExportPPG;
 
-                    trigger OnAction();
-                    begin
-                        Message('Skickar filen');
-                    end;
+                    //trigger OnAction();
+                    //begin
+                    //    Message('Skickar filen');
+                        
+                    //end;
                 }
         
         }

@@ -33,6 +33,11 @@
           <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Table - Field</note>
         </trans-unit>
+        <trans-unit id="XmlPort 45460717 - Property 3830149458" maxWidth="999" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export PPG</source>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort - XmlPort</note>
+        </trans-unit>
       </group>
     </body>
   </file>
