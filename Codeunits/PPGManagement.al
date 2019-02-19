@@ -1,4 +1,4 @@
-codeunit 50000 PPGManagement
+codeunit 50030 PPGManagement
 {
     trigger OnRun();
     begin
