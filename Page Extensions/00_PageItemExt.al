@@ -29,20 +29,19 @@ pageextension 50030 "HTC Items"  extends "Item Card"
         // Add changes to page actions here
         addlast("F&unctions")
         {
-            
-                action("Export PPG")
-                {
-                    ApplicationArea=All;
-                    Caption='Send to PPG';
-                    Promoted=true;
-                    PromotedIsBig=true;
-                    Image=ExportFile;
-            
-                    trigger OnAction();
-                    begin
-                        PPGManagment.ExportPPGcu(Rec);
-                    end;
-                }
+            action("Send to PPG")
+            {
+                ApplicationArea = All;
+                Caption = 'Send to PPG';
+                Promoted = true;
+                PromotedIsBig = true;
+                Image = ExportFile;
+
+                trigger OnAction();
+                begin
+                    PPGManagment.ExportPPGcu(Rec);
+                end;
+            }
         
         }
     }
