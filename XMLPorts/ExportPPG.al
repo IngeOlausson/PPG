@@ -5,7 +5,7 @@ xmlport 50000 "ExportPPG"
     Format =VariableText;
     Direction=Export;
     FieldSeparator=';';
-    FieldDelimiter='"';
+    FieldDelimiter='';
     UseRequestPage=false;
     FileName='\\SE0VIS075.htc-sweden.com\XMLDataExchange\PPG\Artikel\Down\ArtikelDown.txt';
     
