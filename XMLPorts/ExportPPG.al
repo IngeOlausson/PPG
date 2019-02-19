@@ -49,7 +49,7 @@ xmlport 50000 "ExportPPG"
                 {
                     trigger onbeforePassvariable();
                         var
-                            StoreClass: text;
+                            StoreClass: text[3];
                         begin
                             StoreClass := 'STD';
                         end;
@@ -67,4 +67,5 @@ xmlport 50000 "ExportPPG"
     
     var
         CurrItem : Text;
+        //StoreClass: Text;
 }
