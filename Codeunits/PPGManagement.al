@@ -13,6 +13,7 @@ codeunit 50000 PPGManagement
         myInt : Integer;
     begin
         CurrItem.SetRecFilter;
+        CurrItem.SetRange("No.", '10188');
         Xmlport.Run(50000,false,false,CurrItem);
 
     end;
