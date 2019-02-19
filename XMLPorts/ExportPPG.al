@@ -51,7 +51,7 @@ xmlport 50000 "ExportPPG"
                         var
                             StoreClass: text;
                         begin
-                            StoreClass := '0';
+                            StoreClass := 'STD';
                         end;
                 }                                                                        
                 fieldelement(BinType; Item."Bin Type")
