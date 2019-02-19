@@ -30,7 +30,7 @@ pageextension 50030 "HTC Items"  extends "Item Card"
         addlast("F&unctions")
         {
             
-                action(ExportPPG)
+                action("Export PPG")
                 {
                     ApplicationArea=All;
                     Caption='Send to PPG';
