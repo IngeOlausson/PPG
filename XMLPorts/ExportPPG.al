@@ -7,7 +7,7 @@ xmlport 50000 "ExportPPG"
     FieldSeparator=';';
     FieldDelimiter='<None>';
     UseRequestPage=false;
-    FileName='\\SE0VIS075.htc-sweden.com\XMLDataExchange\PPG\Artikel\Down\ArtikelDown.txt';
+    //FileName='\\SE0VIS075.htc-sweden.com\XMLDataExchange\PPG\Artikel\Down\ArtikelDown.txt';
     
 
     schema

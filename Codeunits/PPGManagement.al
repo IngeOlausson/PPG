@@ -11,10 +11,16 @@ codeunit 50030 PPGManagement
     procedure ExportPPGcu(var CurrItem : Record Item);
     var
         myInt : Integer;
+        xmlFile : File;
+        outStreamVar : OutStream;
+
     begin
         CurrItem.SetRecFilter;
-        //CurrItem.SetRange("No.", '10188');
-        Xmlport.Run(50000,false,false,CurrItem);
+        xmlFile.Create('\\SE0VIS075.htc-sweden.com\XMLDataExchange\PPG\Artikel\Down\ArtikelDown.txt');
+        xmlFile.CreateOutStream(outStreamVar);
+    
+        Xmlport.Export(50000,outStreamVar,CurrItem);
+        xmlFile.Close;
 
     end;
 }
