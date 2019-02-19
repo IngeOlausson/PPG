@@ -8,7 +8,7 @@ tableextension 50030 "HTC Item" extends Item
             Caption='Bin Type';
             TableRelation="BinType";
         }
-        field(123456701;"Max Qty. in Bin";Decimal)
+        field(123456701;"Max Qty. in Bin";Integer)
         {
             Caption='Max Qty. in Bin';
         }

@@ -28,8 +28,9 @@ xmlport 50000 "ExportPPG"
                 }  
                 fieldelement(MaxQty ; Item."Max Qty. in Bin")
                 {
+                    
+                }
 
-                }        
                 textelement(MinQty)
                 {
                     trigger onbeforePassvariable();
