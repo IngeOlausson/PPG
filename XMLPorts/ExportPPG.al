@@ -1,7 +1,7 @@
 xmlport 50000 "ExportPPG"
 {
     caption='Export PPG';
-    TextEncoding = Windows;
+    TextEncoding = UTF8;
     Format =VariableText;
     Direction=Export;
     FieldSeparator=';';
