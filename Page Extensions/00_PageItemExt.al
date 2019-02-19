@@ -30,25 +30,23 @@ pageextension 50030 "HTC Items"  extends "Item Card"
         addlast("F&unctions")
         {
             
-                action("Send to PPG")
+                action(ExportPPG)
                 {
                     ApplicationArea=All;
                     Caption='Send to PPG';
                     Promoted=true;
                     PromotedIsBig=true;
                     Image=ExportFile;
-                    RunObject = xmlport ExportPPG;
-
-                    //trigger OnAction();
-                    //begin
-                    //    Message('Skickar filen');
-                        
-                    //end;
+            
+                    trigger OnAction();
+                    begin
+                        PPGManagment.ExportPPGcu(Rec);
+                    end;
                 }
         
         }
     }
     
     var
-        myInt : Integer;
+        PPGManagment : Codeunit PPGManagement;
 }

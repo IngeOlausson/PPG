@@ -8,7 +8,7 @@ xmlport 50000 "ExportPPG"
     FieldDelimiter='"';
     UseRequestPage=false;
     FileName='\\SE0VIS075.htc-sweden.com\XMLDataExchange\PPG\Artikel\Down\ArtikelDown.txt';
-
+    
 
     schema
     {
@@ -16,23 +16,48 @@ xmlport 50000 "ExportPPG"
         {
             tableelement(Item; Item)
             {
+                //SourceTableView = WHERE ("No." = );
                 XmlName='Item';
                 fieldelement(ItemNo; Item."No.")
                 {
 
                 }
+                fieldelement(Desc; Item."Description")
+                {
+
+                }  
+                fieldelement(MaxQty ; Item."Max Qty. in Bin")
+                {
+
+                }        
+                textelement(MinQty)
+                {
+                    trigger onbeforePassvariable();
+                        var
+                            MinQty: Integer;
+                        begin
+                            MinQty := 0;
+                        end;
+
+                }  
+                fieldelement(Desc2; Item."Description 2")
+                {
+
+                }   
+                textelement(StoreClass)
+                {
+                    trigger onbeforePassvariable();
+                        var
+                            StoreClass: text;
+                        begin
+                            StoreClass := '0';
+                        end;
+                }                                                                        
                 fieldelement(BinType; Item."Bin Type")
                 {
 
                 }
-                fieldelement(MaxQty ; Item."Max Qty. in Bin")
-                {
-
-                }
-                fieldelement(TransferedPPG ; Item."Transfered to PPG")
-                {
-
-                }                                
+   
             }
         }
     }
@@ -40,5 +65,5 @@ xmlport 50000 "ExportPPG"
  
     
     var
-        myInt : Integer;
+        CurrItem : Text;
 }
