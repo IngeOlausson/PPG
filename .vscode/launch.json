@@ -5,7 +5,7 @@
             "type": "al",
             "request": "launch",
             "name": "Dev server",
-            "server": "http://se0vis075.global.hvwan.net",
+            "server": "http://se0vis075.htc-sweden.com",
             "serverInstance": "DynamicsNAV110",
             "authentication": "Windows",
             "port": 7049,
