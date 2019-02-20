@@ -16,7 +16,7 @@ xmlport 50000 "ExportPPG"
         {
             tableelement(Item; Item)
             {
-                //SourceTableView = WHERE ("No." = );
+
                 XmlName='Item';
                 fieldelement(ItemNo; Item."No.")
                 {
@@ -35,9 +35,9 @@ xmlport 50000 "ExportPPG"
                 {
                     trigger onbeforePassvariable();
                         var
-                            MinQty: Integer;
+
                         begin
-                            MinQty := 0;
+                            MinQty := '0';
                         end;
 
                 }  
