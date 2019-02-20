@@ -16,7 +16,7 @@ codeunit 50030 PPGManagement
 
     begin
         CurrItem.SetRecFilter;
-        xmlFile.Create('\\SE0VIS075.htc-sweden.com\XMLDataExchange\PPG\Artikel\Down\ArtikelDown.txt');
+        xmlFile.Create('\\SE0VIS075.global.hvwan.net\XMLDataExchange\PPG\Artikel\Down\ArtikelDown.txt');
         xmlFile.CreateOutStream(outStreamVar);
     
         Xmlport.Export(50000,outStreamVar,CurrItem);

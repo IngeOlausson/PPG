@@ -4,6 +4,7 @@ pageextension 50031 PageInventorySetupExt extends "Inventory Setup"
     {
         addlast(Numbering)
         {
+            
             group(PPG)
             {
                 caption = 'PPG';
