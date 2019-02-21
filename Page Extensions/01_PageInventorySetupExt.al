@@ -2,31 +2,36 @@ pageextension 50031 PageInventorySetupExt extends "Inventory Setup"
 {
     layout
     {
-        addlast(Numbering)
+        addafter(Numbering)
         {
             
-            group(PPG)
+            group(PPGGroup)
             {
                 caption = 'PPG';
-                field("PPG ItemDown";"PPG ItemDown")
-                {
-
-                }
-                field("PPG OrderDown";"PPG OrderDown")
-                {
-
-                }
-                field("PPG OrderUp";"PPG OrderUp")
-                {
-
-                }
-                field("Bin Kardex";"Bin Kardex")
-                {
-
-                }
             }
-
         }
+        addfirst(PPGGroup)
+        {
+            field("PPG ItemDown";"PPG ItemDown")
+            {
+
+
+            }
+            field("PPG OrderDown";"PPG OrderDown")
+            {
+                Width = 80;
+            }
+            field("PPG OrderUp";"PPG OrderUp")
+            {
+
+            }
+            field("Bin Kardex";"Bin Kardex")
+            {
+
+            }
+        }   
+
+        
     }
 
     actions
