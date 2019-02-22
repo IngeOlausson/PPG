@@ -13,10 +13,12 @@ codeunit 50030 PPGManagement
         myInt : Integer;
         xmlFile : File;
         outStreamVar : OutStream;
+        InvSetup : Record "Inventory Setup";
 
     begin
-        CurrItem.SetRecFilter;
-        xmlFile.Create('\\SE0VIS075.global.hvwan.net\XMLDataExchange\PPG\Artikel\Down\ArtikelDown.txt');
+        CurrItem.SetRecFilter;        
+        InvSetup.Get;
+        xmlFile.Create(InvSetup."PPG ItemDown");
         xmlFile.CreateOutStream(outStreamVar);
     
         Xmlport.Export(50000,outStreamVar,CurrItem);
