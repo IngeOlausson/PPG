@@ -6,6 +6,7 @@ local procedure PPGCreatePick ();
 var
     myInt : Integer;
 begin
-            Message('Event triggered: Pick Created');
+            //Message('Event triggered: Pick Created');
+            myInt := 1;
 end;
 }
