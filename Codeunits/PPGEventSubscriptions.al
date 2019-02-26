@@ -1,7 +1,7 @@
 codeunit 50031 "PPG EventSubscriptions"
 {
 
-[EventSubscriber(ObjectType::Page, 7335, 'OnBeforeActionEvent', 'Create Pick', true, true)]
+[EventSubscriber(ObjectType::Page, 7335, 'OnBeforeActionEvent', 'Co&mments', true, true)]
 local procedure PPGCreatePick ();
 var
     myInt : Integer;
