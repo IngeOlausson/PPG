@@ -22,8 +22,8 @@ pageextension 50032 PPGWarehouseShipment extends "Warehouse Shipment"
                 begin
                     CurrPage.UPDATE(TRUE);
                     CurrPage.WhseShptLines.PAGE.PickCreate;
-                    //PPGManagment.ExportPPGcu(Rec);
-                    Message('OnAction Create Pick do PPG');
+                    PPGManagment.ExportPPGWhseActOrderdown(Rec);
+                    //Message('OnAction Create Pick do PPG');
                 end;
             }
         
@@ -31,5 +31,5 @@ pageextension 50032 PPGWarehouseShipment extends "Warehouse Shipment"
     }
     
     var
-        myInt : Integer;
+        PPGManagment : Codeunit PPGManagement;
 }
