@@ -32,6 +32,7 @@ codeunit 50030 PPGManagement
         outStreamVar : OutStream;
         InvSetup : Record "Inventory Setup"; 
         WhseActLine : Record "Warehouse Activity Line";
+        FileName : Text[200];
 
     begin
         CurrWhseShip.SetRecFilter;
@@ -42,7 +43,8 @@ codeunit 50030 PPGManagement
         WhseActLine.SetFilter("Bin Code",'=%1',InvSetup."Bin Kardex");
         WhseActLine.SetFilter("Action Type",'=%1',WhseActLine."Action Type"::Take);
         
-        xmlFile.Create(InvSetup."PPG OrderDown");
+        FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime) + '.txt';
+        xmlFile.Create(FileName);
         xmlFile.CreateOutStream(outStreamVar);
     
         Xmlport.Export(50001,outStreamVar,WhseActLine);
