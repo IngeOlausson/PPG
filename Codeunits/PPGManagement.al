@@ -39,8 +39,8 @@ codeunit 50030 PPGManagement
         WhseActLine.SetRange("Activity Type",WhseActLine."Activity Type"::Pick);
         WhseActLine.SetRange("Whse. Document Type",WhseActLine."Whse. Document Type"::Shipment);
         WhseActLine.SetRange("Whse. Document No.",CurrWhseShip."No."); 
-        WhseActLine.SetFilter("Bin Code",'=',InvSetup."Bin Kardex");
-        WhseActLine.SetFilter("Action Type",'=',WhseActLine."Action Type"::Take);
+        WhseActLine.SetFilter("Bin Code",'=%1',InvSetup."Bin Kardex");
+        WhseActLine.SetFilter("Action Type",'=%1',WhseActLine."Action Type"::Take);
         
         xmlFile.Create(InvSetup."PPG OrderDown");
         xmlFile.CreateOutStream(outStreamVar);
