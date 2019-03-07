@@ -14,15 +14,18 @@ codeunit 50030 PPGManagement
         xmlFile : File;
         outStreamVar : OutStream;
         InvSetup : Record "Inventory Setup";
+        FileName : Text[200];
 
     begin
         CurrItem.SetRecFilter;        
         InvSetup.Get;
-        xmlFile.Create(InvSetup."PPG ItemDown");
+        FileName := InvSetup."PPG ItemDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + '.txt';        
+        xmlFile.Create(FileName);
         xmlFile.CreateOutStream(outStreamVar);
     
         Xmlport.Export(50000,outStreamVar,CurrItem);
         xmlFile.Close;
+        message('PPG information has been sent');
 
     end;
     procedure ExportPPGWhseActOrderdown(var CurrWhseShip : Record "Warehouse Shipment Header");
@@ -43,7 +46,7 @@ codeunit 50030 PPGManagement
         WhseActLine.SetFilter("Bin Code",'=%1',InvSetup."Bin Kardex");
         WhseActLine.SetFilter("Action Type",'=%1',WhseActLine."Action Type"::Take);
         
-        FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime) + '.txt';
+        FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + '.txt';
         xmlFile.Create(FileName);
         xmlFile.CreateOutStream(outStreamVar);
     
