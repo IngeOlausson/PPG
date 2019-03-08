@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en-US" original="PPG">
+  <file datatype="xml" source-language="en-US" target-language="sv-SE" original="PPG">
     <body>
       <group id="body">
         <trans-unit id="PageExtension 3910149667 - Action 1541851956 - Property 2879900210" maxWidth="999" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send to PPG</source>
+          <target>Skicka till PPG</target>
           <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension - Action</note>
         </trans-unit>
@@ -15,11 +16,13 @@
         </trans-unit>
         <trans-unit id="PageExtension 3827294582 - Action 906228247 - Property 2879900210" maxWidth="999" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create Pick w PPG</source>
+          <target>Skapa plock m PPG</target>          
           <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension - Action</note>
         </trans-unit>
         <trans-unit id="PageExtension 2288883150 - Action 940748657 - Property 2879900210" maxWidth="999" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create Orderdown PPG</source>
+          <target>Skapa order PPG</target>          
           <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension - Action</note>
         </trans-unit>
