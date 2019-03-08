@@ -86,6 +86,7 @@ codeunit 50030 PPGManagement
     var
         xmlFile : File;
         outStreamVar : OutStream;
+        outStreamVar2 : OutStream;        
         InvSetup : Record "Inventory Setup"; 
         IJnl : Record "Item Journal Line";
         FileName : Text[200];
@@ -98,7 +99,7 @@ codeunit 50030 PPGManagement
         IJnl.SetFilter(Quantity,'<>0');        
         if (IJnl.Count > 0) and (InvSetup."Bin Kardex" <> '') then
         begin
-            FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>O') + '.txt';
+            FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + 'O.txt';
             xmlFile.Create(FileName);
             xmlFile.CreateOutStream(outStreamVar);
     
@@ -110,9 +111,9 @@ codeunit 50030 PPGManagement
         IJnl.SetFilter(Quantity,'<>0');        
         if (IJnl.Count > 0) and (InvSetup."Bin Kardex" <> '') then
         begin
-            FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>I') + '.txt';
+            FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + 'I.txt';
             xmlFile.Create(FileName);
-            xmlFile.CreateOutStream(outStreamVar);
+            xmlFile.CreateOutStream(outStreamVar2);
     
             Xmlport.Export(50003,outStreamVar,IJnl);
             xmlFile.Close;        
