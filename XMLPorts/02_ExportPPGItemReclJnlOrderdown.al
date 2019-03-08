@@ -18,7 +18,7 @@ xmlport 50003 xmlExportPPGIReclJnlOrderdown
                 {
                 }
 
-                fieldelement(ItemNo; "Item Journal Line"."No.")
+                fieldelement(ItemNo; "Item Journal Line"."Item No.")
                 {
                 }                
                 textelement(Qty)
