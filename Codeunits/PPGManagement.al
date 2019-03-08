@@ -97,7 +97,7 @@ codeunit 50030 PPGManagement
         IJnl.SetRange("Journal Template Name",ItemJnlLine."Journal Template Name");
         IJnl.SetRange("Journal Batch Name",ItemJnlLine."Journal Batch Name"); 
         IJnl.SetFilter("Bin Code",'=%1',InvSetup."Bin Kardex");
-        IJnl.SetFilter(Quantity,'<>0');        
+        //IJnl.SetFilter(Quantity,'<>0');        
         if (IJnl.Count > 0) and (InvSetup."Bin Kardex" <> '') then
         begin
             FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + 'O.txt';
@@ -109,7 +109,7 @@ codeunit 50030 PPGManagement
         end;
 
         IJnl.SetFilter("New Bin Code",'=%1',InvSetup."Bin Kardex");
-        IJnl.SetFilter(Quantity,'<>0');        
+        //IJnl.SetFilter(Quantity,'<>0');        
         if (IJnl.Count > 0) and (InvSetup."Bin Kardex" <> '') then
         begin
             FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + 'I.txt';
