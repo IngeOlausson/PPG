@@ -45,6 +45,7 @@ codeunit 50030 PPGManagement
         WhseActLine.SetRange("Whse. Document No.",CurrWhseShip."No."); 
         WhseActLine.SetFilter("Bin Code",'=%1',InvSetup."Bin Kardex");
         WhseActLine.SetFilter("Action Type",'=%1',WhseActLine."Action Type"::Take);
+        WhseActLine.SetFilter(Quantity,'<>0');         
 
         if (WhseActLine.Count > 0) and (InvSetup."Bin Kardex" <> '') then
         begin        
@@ -57,7 +58,7 @@ codeunit 50030 PPGManagement
         end;
     end;
 
-    
+
     procedure ExportPPGPReceiptOrderdown(var PurchRcptHeader : Record "Purch. Rcpt. Header");
     var
         myInt : Integer;
@@ -72,6 +73,7 @@ codeunit 50030 PPGManagement
         PReceiptLine.SetRange("Type",PReceiptLine.Type::Item);
         PReceiptLine.SetRange("Document No.",PurchRcptHeader."No."); 
         PReceiptLine.SetFilter("Bin Code",'=%1',InvSetup."Bin Kardex");
+        PReceiptLine.SetFilter(Quantity,'<>0');        
         if (PReceiptLine.Count > 0) and (InvSetup."Bin Kardex" <> '') then
         begin
             FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + '.txt';
