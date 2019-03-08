@@ -14,6 +14,7 @@ xmlport 50003 xmlExportPPGIReclJnlOrderdown
             tableelement("Item Journal Line";"Item Journal Line")
             {
                 XmlName='ItemReclJnl';
+
                 fieldelement(SourceNo;"Item Journal Line"."Document No.")
                 {
                 }
@@ -28,15 +29,22 @@ xmlport 50003 xmlExportPPGIReclJnlOrderdown
                         InvSetup : Record "Inventory Setup"; 
 
                     begin
-                        InvSetup.Get;                        
-                        if ("Item Journal Line"."Bin Code" = InvSetup."Bin Kardex") and
+                        InvSetup.Get; 
+                        if ("Item Journal Line"."Bin Code" <> InvSetup."Bin Kardex") and 
                         ("Item Journal Line"."New Bin Code" <> InvSetup."Bin Kardex") then
-                            Qty := format("Item Journal Line".Quantity * -1);
-                        if ("Item Journal Line"."New Bin Code" = InvSetup."Bin Kardex") and
-                        ("Item Journal Line"."Bin Code" <> InvSetup."Bin Kardex") then
-                            Qty := format("Item Journal Line".Quantity);                            
+                            Qty := '0'  
+                        else
+                        begin
+                            if ("Item Journal Line"."Bin Code" = InvSetup."Bin Kardex") and
+                            ("Item Journal Line"."New Bin Code" <> InvSetup."Bin Kardex") then
+                                Qty := format("Item Journal Line".Quantity * -1);
+                            if ("Item Journal Line"."New Bin Code" = InvSetup."Bin Kardex") and
+                            ("Item Journal Line"."Bin Code" <> InvSetup."Bin Kardex") then
+                                Qty := format("Item Journal Line".Quantity);                            
+                        end;                       
                     end;
-                }                
+                } 
+              
             }
         }
     }

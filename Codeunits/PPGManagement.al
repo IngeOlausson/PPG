@@ -94,8 +94,8 @@ codeunit 50030 PPGManagement
         InvSetup.Get;
         IJnl.SetRange("Journal Template Name",ItemJnlLine."Journal Template Name");
         IJnl.SetRange("Journal Batch Name",ItemJnlLine."Journal Batch Name"); 
-        //PReceiptLine.SetFilter("Bin Code",'=%1',InvSetup."Bin Kardex");
-        //PReceiptLine.SetFilter(Quantity,'<>0');        
+        IJnl.SetFilter("Bin Code",'=%1',InvSetup."Bin Kardex");
+        IJnl.SetFilter(Quantity,'<>0');        
         if (IJnl.Count > 0) and (InvSetup."Bin Kardex" <> '') then
         begin
             FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + '.txt';
@@ -105,6 +105,18 @@ codeunit 50030 PPGManagement
             Xmlport.Export(50003,outStreamVar,IJnl);
             xmlFile.Close;        
         end;
+
+        IJnl.SetFilter("New Bin Code",'=%1',InvSetup."Bin Kardex");
+        IJnl.SetFilter(Quantity,'<>0');        
+        if (IJnl.Count > 0) and (InvSetup."Bin Kardex" <> '') then
+        begin
+            FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + '.txt';
+            xmlFile.Create(FileName);
+            xmlFile.CreateOutStream(outStreamVar);
+    
+            Xmlport.Export(50003,outStreamVar,IJnl);
+            xmlFile.Close;        
+        end;        
     end;    
 
 }
