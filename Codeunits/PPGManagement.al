@@ -85,6 +85,7 @@ codeunit 50030 PPGManagement
     procedure ExportPPGItemJnlLineOrderdown(var ItemJnlLine : Record "Item Journal Line");
     var
         xmlFile : File;
+        xmlFile2 : File;        
         outStreamVar : OutStream;
         outStreamVar2 : OutStream;        
         InvSetup : Record "Inventory Setup"; 
@@ -112,12 +113,13 @@ codeunit 50030 PPGManagement
         if (IJnl.Count > 0) and (InvSetup."Bin Kardex" <> '') then
         begin
             FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + 'I.txt';
-            xmlFile.Create(FileName);
-            xmlFile.CreateOutStream(outStreamVar2);
+            xmlFile2.Create(FileName);
+            xmlFile2.CreateOutStream(outStreamVar2);
     
-            Xmlport.Export(50003,outStreamVar,IJnl);
-            xmlFile.Close;        
-        end;        
+            Xmlport.Export(50003,outStreamVar2,IJnl);
+            xmlFile2.Close;        
+        end;    
+        message('PPG information has been sent');    
     end;    
 
 }
