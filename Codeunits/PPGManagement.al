@@ -10,7 +10,6 @@ codeunit 50030 PPGManagement
 
     procedure ExportPPGcu(var CurrItem : Record Item);
     var
-        myInt : Integer;
         xmlFile : File;
         outStreamVar : OutStream;
         InvSetup : Record "Inventory Setup";
@@ -30,7 +29,6 @@ codeunit 50030 PPGManagement
     end;
     procedure ExportPPGWhseActOrderdown(var CurrWhseShip : Record "Warehouse Shipment Header");
     var
-        myInt : Integer;
         xmlFile : File;
         outStreamVar : OutStream;
         InvSetup : Record "Inventory Setup"; 
@@ -61,7 +59,6 @@ codeunit 50030 PPGManagement
 
     procedure ExportPPGPReceiptOrderdown(var PurchRcptHeader : Record "Purch. Rcpt. Header");
     var
-        myInt : Integer;
         xmlFile : File;
         outStreamVar : OutStream;
         InvSetup : Record "Inventory Setup"; 
@@ -84,4 +81,30 @@ codeunit 50030 PPGManagement
             xmlFile.Close;        
         end;
     end;    
+
+    procedure ExportPPGItemJnlLineOrderdown(var ItemJnlLine : Record "Item Journal Line");
+    var
+        xmlFile : File;
+        outStreamVar : OutStream;
+        InvSetup : Record "Inventory Setup"; 
+        IJnl : Record "Item Journal Line";
+        FileName : Text[200];
+
+    begin
+        InvSetup.Get;
+        IJnl.SetRange("Journal Template Name",ItemJnlLine."Journal Template Name");
+        IJnl.SetRange("Journal Batch Name",ItemJnlLine."Journal Batch Name"); 
+        //PReceiptLine.SetFilter("Bin Code",'=%1',InvSetup."Bin Kardex");
+        //PReceiptLine.SetFilter(Quantity,'<>0');        
+        if (IJnl.Count > 0) and (InvSetup."Bin Kardex" <> '') then
+        begin
+            FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + '.txt';
+            xmlFile.Create(FileName);
+            xmlFile.CreateOutStream(outStreamVar);
+    
+            Xmlport.Export(50003,outStreamVar,IJnl);
+            xmlFile.Close;        
+        end;
+    end;    
+
 }
