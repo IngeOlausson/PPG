@@ -82,12 +82,10 @@ codeunit 50030 PPGManagement
         end;
     end;    
 
-    procedure ExportPPGItemJnlLineOrderdown(var ItemJnlLine : Record "Item Journal Line");
+    procedure ExportPPGItemJnlLineOrderdown(var ItemJnlLine : Record "Item Journal Line"; NewBin : Boolean);
     var
         xmlFile : File;
-        xmlFile2 : File;        
         outStreamVar : OutStream;
-        outStreamVar2 : OutStream;        
         InvSetup : Record "Inventory Setup"; 
         IJnl : Record "Item Journal Line";
         FileName : Text[200];
@@ -96,30 +94,26 @@ codeunit 50030 PPGManagement
         InvSetup.Get;
         IJnl.SetRange("Journal Template Name",ItemJnlLine."Journal Template Name");
         IJnl.SetRange("Journal Batch Name",ItemJnlLine."Journal Batch Name"); 
-        IJnl.SetFilter("Bin Code",'=%1',InvSetup."Bin Kardex");
-        //IJnl.SetFilter(Quantity,'<>0');        
+        if NewBin then
+        begin
+            IJnl.SetFilter("Bin Code",'=%1',InvSetup."Bin Kardex");
+            IJnl.SetFilter(Quantity,'<>0');       
+            FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + 'O.txt';            
+        end else
+        begin
+            IJnl.SetFilter("New Bin Code",'=%1',InvSetup."Bin Kardex");
+            IJnl.SetFilter(Quantity,'<>0');                 
+            FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + 'I.txt';            
+        end;
+
         if (IJnl.Count > 0) and (InvSetup."Bin Kardex" <> '') then
         begin
-            FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + 'O.txt';
             xmlFile.Create(FileName);
             xmlFile.CreateOutStream(outStreamVar);
-    
             Xmlport.Export(50003,outStreamVar,IJnl);
             xmlFile.Close;        
         end;
-
-        IJnl.SetFilter("New Bin Code",'=%1',InvSetup."Bin Kardex");
-        //IJnl.SetFilter(Quantity,'<>0');        
-        if (IJnl.Count > 0) and (InvSetup."Bin Kardex" <> '') then
-        begin
-            FileName := InvSetup."PPG OrderDown" + format(CurrentDateTime,12,'<Year><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>') + 'I.txt';
-            xmlFile2.Create(FileName);
-            xmlFile2.CreateOutStream(outStreamVar2);
-    
-            Xmlport.Export(50003,outStreamVar2,IJnl);
-            xmlFile2.Close;        
-        end;    
-        message('PPG information has been sent');    
+        //message('PPG information has been sent');    
     end;    
 
 }

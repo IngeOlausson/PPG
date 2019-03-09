@@ -15,8 +15,19 @@ xmlport 50003 xmlExportPPGIReclJnlOrderdown
             {
                 XmlName='ItemReclJnl';
 
-                fieldelement(SourceNo;"Item Journal Line"."Document No.")
+                textelement(SourceNo)
                 {
+                    trigger OnBeforePassVariable();
+                    var
+                        InvSetup : Record "Inventory Setup"; 
+                    begin
+                        InvSetup.Get;                         
+                        if ("Item Journal Line"."Bin Code" = InvSetup."Bin Kardex") and
+                        ("Item Journal Line"."New Bin Code" <> InvSetup."Bin Kardex") then
+                            SourceNo := "Item Journal Line"."Document No." + 'UT'
+                        else
+                            SourceNo := "Item Journal Line"."Document No." + 'IN';
+                    end;                    
                 }
 
                 fieldelement(ItemNo; "Item Journal Line"."Item No.")
@@ -30,18 +41,12 @@ xmlport 50003 xmlExportPPGIReclJnlOrderdown
 
                     begin
                         InvSetup.Get; 
-                        if ("Item Journal Line"."Bin Code" <> InvSetup."Bin Kardex") and 
+                        if ("Item Journal Line"."Bin Code" = InvSetup."Bin Kardex") and
                         ("Item Journal Line"."New Bin Code" <> InvSetup."Bin Kardex") then
-                            Qty := '0'  
-                        else
-                        begin
-                            if ("Item Journal Line"."Bin Code" = InvSetup."Bin Kardex") and
-                            ("Item Journal Line"."New Bin Code" <> InvSetup."Bin Kardex") then
-                                Qty := format("Item Journal Line".Quantity * -1);
-                            if ("Item Journal Line"."New Bin Code" = InvSetup."Bin Kardex") and
-                            ("Item Journal Line"."Bin Code" <> InvSetup."Bin Kardex") then
-                                Qty := format("Item Journal Line".Quantity);                            
-                        end;                       
+                            Qty := format("Item Journal Line".Quantity * -1);
+                        if ("Item Journal Line"."New Bin Code" = InvSetup."Bin Kardex") and
+                        ("Item Journal Line"."Bin Code" <> InvSetup."Bin Kardex") then
+                            Qty := format("Item Journal Line".Quantity);                            
                     end;
                 } 
               

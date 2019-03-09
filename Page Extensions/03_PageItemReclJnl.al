@@ -19,7 +19,9 @@ pageextension 50033 PPGItemReclJnl extends "Item Reclass. Journal"
 
                 trigger OnAction();
                 begin
-                    PPGManagment.ExportPPGItemJnlLineOrderdown(Rec);
+                    PPGManagment.ExportPPGItemJnlLineOrderdown(Rec, false);
+                    PPGManagment.ExportPPGItemJnlLineOrderdown(Rec, true);   
+                    message('PPG information has been sent');                  
                 end;
             }
         
